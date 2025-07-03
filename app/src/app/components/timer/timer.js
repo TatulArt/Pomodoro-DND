@@ -1,10 +1,10 @@
 'use client'
 import { useState, useRef } from "react";
-import "./timer.css";
+import styles from "./timer.module.css";
 
 // Pomodoro settings
-let timeInMinutes = 3; // Брать с БД
-const POMODORO_DURATION = timeInMinutes * 60;
+let timeInMinutes = 1; // Брать с БД
+const POMODORO_DURATION = timeInMinutes * 3;
 
 export default function Timer() {
   const [secondsLeft, setSecondsLeft] = useState(POMODORO_DURATION);
@@ -51,18 +51,18 @@ export default function Timer() {
   }
 
   return (
-    <div className="timer-container">
-      <div className="timer-display">
+    <div className={styles['timer-container']}>
+      <div className={styles['timer-display']}>
         {formatTime(secondsLeft)}
       </div>
-      <div className="timer-controls">
-        <button onClick={startTimer} disabled={isRunning} className="timer-btn">
+      <div className={styles['timer-controls']}>
+        <button onClick={startTimer} disabled={isRunning} className={styles['timer-btn']}>
           Start
         </button>
-        <button onClick={stopTimer} disabled={!isRunning} className="timer-btn">
+        <button onClick={stopTimer} disabled={!isRunning} className={styles['timer-btn']}>
           Stop
         </button>
-        <button onClick={resetTimer} className="timer-btn">
+        <button onClick={resetTimer} className={styles['timer-btn']}>
           Reset
         </button>
       </div>

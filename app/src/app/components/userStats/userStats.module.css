@@ -1,0 +1,38 @@
+.user-stats-container {
+    min-width: 340px;
+    max-width: 420px;
+    margin: 0 auto;
+    background: var(--background);
+    color: var(--foreground);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.07);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-stats-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.user-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-stats-stat-name {
+    padding: 6px 0;
+    font-weight: 500;
+    text-align: left;
+}
+
+.user-stats-stat-value {
+    padding: 6px 0;
+    font-weight: 700;
+    text-align: right;
+}
