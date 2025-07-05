@@ -1,0 +1,72 @@
+.task-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--gray-alpha-100);
+  border: 1px solid var(--gray-alpha-200);
+  min-width: 300px;
+  margin: 10px auto 40px auto;
+}
+
+.selected-task-display {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+
+.task-dropdown {
+  width: 100%;
+  appearance: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: var(--background);
+  border: 1px solid var(--gray-alpha-200);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.task-dropdown-option:hover {
+  background: var(--button-secondary-hover);
+  border-color: var(--gray-alpha-200);
+}
+
+.task-dropdown-option.selected {
+  background: var(--foreground);
+  color: var(--background);
+  border-color: var(--foreground);
+}
+
+.task-dropdown-option input[type="radio"] {
+  margin: 0;
+  accent-color: var(--foreground);
+}
+
+.task-dropdown-option label {
+  flex: 1;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .task-selector {
+    padding: 16px;
+    min-width: 250px;
+  }
+  
+  .task-dropdown-option {
+    padding: 10px 12px;
+  }
+  
+  .task-dropdown-option label {
+    font-size: 13px;
+  }
+}
