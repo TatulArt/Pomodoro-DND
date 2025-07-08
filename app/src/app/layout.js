@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -20,6 +21,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <nav style={{ display: "flex", gap: "12px", padding: "16px" }}>
+          <Link href="/home">Home</Link>
+          <Link href="/authPage">Auth</Link>
+        </nav>
         {children}
       </body>
     </html>

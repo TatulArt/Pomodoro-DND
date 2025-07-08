@@ -6,6 +6,7 @@
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
 
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   width: 100%;
   display: flex;
   align-items: center;
@@ -26,7 +27,6 @@
 }
 
 .main {
-  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -116,12 +116,41 @@ a.secondary {
   gap: 32px;
 }
 
-@media (max-width: 1024px) {
+.main-page-container-left {
+  background: var(--background);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+  height: 100%;
+}
+
+.main-page-container-right {
+  background: var(--background);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
   .main-page-container {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     gap: 16px;
+  }
+
+  .main-page-container-left {
+    background: var(--background);
+    border-radius: 16px;
+    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+    height: 100%;
+  }
+  
+  .main-page-container-right {
+    background: var(--background);
+    border-radius: 16px;
+    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+    height: 100%;
   }
 }
 

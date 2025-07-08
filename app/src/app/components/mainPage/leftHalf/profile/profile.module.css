@@ -1,10 +1,7 @@
 .profile-container {
-    max-width: 340px;
-    margin: 0 auto;
-    background: var(--background);
+    max-width: 300px;
+    margin: 10px auto 0px auto;
     color: var(--foreground);
-    border-radius: 12px;
-    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.07);
     padding: 10px 0px;
     display: flex;
     flex-direction: column;

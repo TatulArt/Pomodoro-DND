@@ -3,10 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px 24px;
-  background: var(--background);
-  border-radius: 16px;
-  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+  padding: 60px 200px 0px 200px;
   max-width: 320px;
   margin: 10px auto 40px auto;
   gap: 24px;
@@ -16,7 +13,7 @@
   font-size: 3rem;
   font-family: var(--font-geist-mono, monospace);
   color: var(--foreground);
-  background: rgba(0,0,0,0.03);
+  background: rgba(0,0,0,0.09);
   border-radius: 8px;
   padding: 16px 32px;
   letter-spacing: 2px;
