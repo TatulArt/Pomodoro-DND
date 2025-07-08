@@ -11,8 +11,8 @@ router = APIRouter(
 )
 
 
-@routerU.post("/register", response_model=UserInDB)
-async def register_user(user: UserCreate):
+@router.post("/register", response_model=UserInDB)
+async def register_user(User: UserCreate):
     # Регистрация нового пользователя
     connect = connection_to_db()
     if connect is None:
@@ -22,12 +22,12 @@ async def register_user(user: UserCreate):
     try:
         cursor.execute(
             "SELECT id FROM users WHERE login = %s OR email = %s",
-            (user.login, user.email)
+            (User.login, User.email)
         )
         if cursor.fetchone():
             raise HTTPException(status_code=400, detail="Username or email already registered")
 
-        hashed_password = get_password_hash(user.password)
+        hashed_password = get_password_hash(User.password)
 
         cursor.execute(
             "INSERT INTO users (login, email, password, exp, level, stat_might,"
@@ -43,31 +43,31 @@ async def register_user(user: UserCreate):
              User.exp_per_day, User. time_per_day, User.time_all)
         )
         connect.commit()
-        user_id = cursor.lastrowid
+        User_id = cursor.lastrowid
 
         # возвращаем пользователя
         return {
-            "id" : user_id,
-            "login": user.login,
-            "email": user.email,
-            "exp": user.exp,
-            "level": user.level,
-            "stat_might": user.stat_might,
-            "stat_might_per_day": user.stat_might_per_day,
-            "stat_depxsity": user.stat_depxsity,
-            "stat_depxsity_per_day": user.stat_depxsity_per_day,
-            "stat_versatality": user.versatality,
-            "stat_versatality_per_day": user.versatality_per_day,
-            "stat_intellect": user.stat_intellect,
-            "stat_intellect_per_day": user.stat_intellect_per_day,
-            "stat_wisdom": user.stat_wisdom,
-            "stat_wisdom_per_day": user.stat_wisdom_per_day,
-            "stat_craft": user.stat_craft,
-            "stat_craft_per_day": user.stat_craft_per_day,
-            "task_per_day": user.task_per_day,
-            "exp_per_day": user.exp_per_day,
-            "time_per_day": user.time_per_day,
-            "time_all": user.time_all
+            "id" : User_id,
+            "login": User.login,
+            "email": User.email,
+            "exp": User.exp,
+            "level": User.level,
+            "stat_might": User.stat_might,
+            "stat_might_per_day": User.stat_might_per_day,
+            "stat_depxsity": User.stat_depxsity,
+            "stat_depxsity_per_day": User.stat_depxsity_per_day,
+            "stat_versatality": User.versatality,
+            "stat_versatality_per_day": User.versatality_per_day,
+            "stat_intellect": User.stat_intellect,
+            "stat_intellect_per_day": User.stat_intellect_per_day,
+            "stat_wisdom": User.stat_wisdom,
+            "stat_wisdom_per_day": User.stat_wisdom_per_day,
+            "stat_craft": User.stat_craft,
+            "stat_craft_per_day": User.stat_craft_per_day,
+            "task_per_day": User.task_per_day,
+            "exp_per_day": User.exp_per_day,
+            "time_per_day": User.time_per_day,
+            "time_all": User.time_all
         }
     except mysql.connector.Error as e:
         connect.rollback()
@@ -76,7 +76,7 @@ async def register_user(user: UserCreate):
         cursor.close()
         connect.close()
 
-@routerU.post("/login")
+@router.post("/login")
 async def login_user(user: UserLogin):
     #Аутентификация пользователя
     connect = connection_to_db()
@@ -130,4 +130,4 @@ async def login_user(user: UserLogin):
 
     finally:
         cursor.close()
-        conn.close()
+        connect.close()
