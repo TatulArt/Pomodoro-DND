@@ -1,7 +1,7 @@
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(255) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL 
+    password_hash VARCHAR(255) NOT NULL,
     might INT,
     dexterity INT, 
     versatality INT,
@@ -26,8 +26,8 @@ CREATE TABLE users (
 );
 
 CREATE TABLE achievements (
-    achievement_name VARCHAR(255) NOT NULL,
-    achievement_id VARCHAR(255) NOT NULL,
+    achievement_id PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    achievement_name VARCHAR(255),
     achievement_description TEXT, 
     achievement_exp_gain INT,
     achievement_completion_status BOOLEAN, 
@@ -42,8 +42,8 @@ CREATE TABLE achievements (
 );
 
 CREATE TABLE tasks (
+    task_id PRIMARY KEY AUTO_INCREMENT,
     task_name VARCHAR(255),
-    task_id VARCHAR(255),
     task_completion_status BOOLEAN, 
     completion_time TIMESTAMP,
     task_exp_gain INT,
