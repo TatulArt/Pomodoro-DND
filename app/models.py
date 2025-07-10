@@ -2,7 +2,6 @@ from pydantic import BaseModel
 
 class UserBase(BaseModel):
     login: str
-    email: str
     exp: int
     level: int
     stat_might: int

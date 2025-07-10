@@ -30,13 +30,13 @@ async def register_user(User: UserCreate):
         hashed_password = get_password_hash(User.password)
 
         cursor.execute(
-            "INSERT INTO users (login, email, password, exp, level, stat_might,"
+            "INSERT INTO users (login, password, exp, level, stat_might,"
             " stat_might_per_day, stat_depxsity, stat_depxsity_per_day, stat_versatality,"
             " stat_veratality_per_day, stat_intellect, stat_intellect_per_day, stat_wisdom,"
             " stat_wisdom_per_day, stat_craft, stat_craft_per_day, task_per_day,"
             " exp_per_day, time_per_day, time_all) "
             "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,)",
-            (User.login, User.email, User.password, User.exp, User.level, User.stat_might,
+            (User.login, User.password, User.exp, User.level, User.stat_might,
              User.stat_might_per_day, User.stat_depxsity, User.stat_depxsity_per_day, User.stat_versatality,
              User.stat_versatality_per_day, User.stat_intellect, User.stat_intellect_per_day, User.stat_wisdom,
              User.stat_wisdom_per_day, User.stat_craft, User.stat_craft_per_day, User.task_per_day,
@@ -86,7 +86,7 @@ async def login_user(user: UserLogin):
     cursor = connect.cursor(dictionary=True)
     try:
         cursor.execute(
-            "SELECT id, login, email, password, exp, level, stat_might,"
+            "SELECT id, login, password, exp, level, stat_might,"
             " stat_might_per_day, stat_depxsity, stat_depxsity_per_day, stat_versatality,"
             " stat_veratality_per_day, stat_intellect, stat_intellect_per_day, stat_wisdom,"
             " stat_wisdom_per_day, stat_craft, stat_craft_per_day, task_per_day,"
@@ -105,7 +105,6 @@ async def login_user(user: UserLogin):
         return {
             "id": db_user["user_id"],
             "login": db_user["lodgin"],
-            "email": db_user["email"],
             "exp": db_user["exp"],
             "level": db_user["level"],
             "stat_might": db_user["stat_might"],
