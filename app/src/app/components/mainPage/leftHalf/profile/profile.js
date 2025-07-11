@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./profile.module.css";
 import Image from "next/image";
 
@@ -9,7 +8,7 @@ const userProfile = {
 
 export default function Profile() {
   return (
-    <div className={styles["profile-container"]}>
+     <div className={styles["profile-container"]}>
       <Image
         src={userProfile.avatar}
         alt={`${userProfile.name} avatar`}
@@ -21,5 +20,7 @@ export default function Profile() {
         {userProfile.name}
       </h2>
     </div>
+
+    
   );
 }

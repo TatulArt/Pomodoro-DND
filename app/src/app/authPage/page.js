@@ -17,14 +17,93 @@ const AuthPage = () => {
     }));
   };
 
+async function loginUser(username, password) {
+  try {
+    const response = await fetch('http://your-api-address/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        login: username,
+        password: password
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.detail || 'Login failed');
+    }
+    const userData = await response.json();
+    return userData;
+  } catch (error) {
+    console.error('Login error:', error);
+    throw error;
+  }
+}
+
+async function registerUser(username, password) {
+  try {
+    const response = await fetch('http://your-api-address/users/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        login: username,
+        exp: 0,
+        level: 0,
+        stat_might: 0,
+        stat_might_per_day: 0,
+        stat_depxsity: 0,
+        stat_depxsity_per_day: 0,
+        stat_versatality: 0,
+        stat_veratality_per_day: 0,
+        stat_intellect: 0,
+        stat_intellect_per_day: 0,
+        stat_wisdom: 0,
+        stat_wisdom_per_day: 0,
+        stat_craft: 0,
+        stat_craft_per_day: 0,
+        task_per_day: 0,
+        exp_per_day: 0,
+        time_per_day: 0,
+        time_all: 0,
+        password: password,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.detail || 'Register failed');
+    }
+
+    const userData = await response.json();
+    return userData;
+  } catch (error) {
+    console.error('Register error:', error);
+    throw error;
+  }
+}
+
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLogin) {
       console.log('Login attempt:', formData);
-      // Add your login logic here
+
+      loginUser(formData.name, formData.password).then(data => {
+        console.log('Login successful:', data);
+      })
+      .catch(error => console.error('Error:', error.message));
     } else {
       console.log('Register attempt:', formData);
-      // Add your registration logic here
+      
+      registerUser(formData.name, formData.password).then(data => {
+        console.log('Register successful:', data);
+        // Сохраняем данные пользователя (например, в состояние или localStorage)
+      })
+      .catch(error => console.error('Error:', error.message));
     }
   };
 
